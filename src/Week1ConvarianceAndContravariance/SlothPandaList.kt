@@ -1,3 +1,5 @@
+package Week1ConvarianceAndContravariance
+
 data class Sloth(val name: String, val isTwoFingered: Boolean) {
     fun eat() {}
     fun sleep() {}

@@ -1,5 +1,10 @@
+package Week2HigherOrderFunctions
 import kotlin.random.Random
 import kotlin.reflect.KFunction1
+
+/**
+ *  Generics - Higher Order Functions
+ */
 
 sealed class Mammal(val name: String) {
     fun eat() {}
@@ -10,7 +15,7 @@ sealed class Mammal(val name: String) {
     open fun relief() {}
 }
 
-data class Sloths(val slothName: String,
+data class Sloth(val slothName: String,
                   val isTwoFingered: Boolean,
                   var slothWeight: Int): Mammal(slothName) {
     override fun relief() {
@@ -22,84 +27,52 @@ data class Sloths(val slothName: String,
     }
 }
 
-data class Pandas(val pandaName: String) : Mammal(pandaName)
+data class Panda(val pandaName: String) : Mammal(pandaName)
 
 data class Manatee(val manateeName: String): Mammal(manateeName)
 
 fun Mammal.vertebraeCount(): Int {
     return when (this) {
         is Manatee -> 6
-        is Sloths -> 10
+        is Sloth -> 10
         else -> 7
     }
 }
 
+// Sealed classes allows for hierarchical control so that the exhaustive
+// types in when statements are within the sealed class type
 fun Mammal.knownSpeciesCount(): Int {
     return when (this) {
-        is Sloths -> 6
-        is Pandas -> 2
+        is Sloth -> 6
+        is Panda -> 2
         is Manatee -> 3
     }
 }
 
 fun Mammal.isEndangered(): Boolean {
     return when (this) {
-        is Sloths -> true
-        is Pandas -> true
+        is Sloth -> true
+        is Panda -> true
         is Manatee -> false
     }
 }
 
+// Higher order function is the second parameter
 fun mammalFactCheck(mammal: Mammal, factCheck: KFunction1<Mammal, Int>): Int {
     return factCheck(mammal)
 }
 
-fun slothActivity(sloth: Sloths, action: Unit) {
-    sloth.run { action }
-}
-
-fun feedCrews(crew: List<Mammal>) {
-    crew.forEach {
-        it.eat()
-    }
-}
-
 fun main() {
-    val slothCrew = listOf(
-        Sloths("Jerry", false, 15),
-        Sloths("Bae", true, 12),
-        Sloths("Alex", false, 15)
-    )
-
-    slothCrew.forEach {
-        slothActivity(it, it.swim())
-        slothActivity(it, it.relief())
-    }
-
-
-    val pandaCrew = listOf(
-        Pandas("Tegan"),
-        Pandas("Peggy")
-    )
-
-    feedCrews(slothCrew)
-    feedCrews(pandaCrew)
 
     val crewCrewCrew = listOf(
-        Sloths("Jerry", false, 15),
-        Pandas("Tegan"),
+        Sloth("Jerry", false, 15),
+        Panda("Tegan"),
         Manatee("Manny")
     )
 
     crewCrewCrew.forEach {
         mammalFactCheck(it, Mammal::vertebraeCount)
         mammalFactCheck(it, Mammal::knownSpeciesCount)
-        mammalFactCheck(it, Mammal::isEndangered)
+        // Week2HigherOrderFunctions.Week3ReifiedGenerics.mammalFactCheck(it, Week3ReifiedGenerics.Mammal::Week2HigherOrderFunctions.Week3ReifiedGenerics.isEndangered)
     }
-
-    val compareByNames = Comparator { a: Mammal, b: Mammal ->
-        a.name.first().toInt() - b.name.first().toInt()
-    }
-
-    println(crewCrewCrew.sortedWith(compareByNames))
 }

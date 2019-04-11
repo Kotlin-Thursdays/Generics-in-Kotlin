@@ -1,5 +1,5 @@
 # Generics-in-Kotlin
-Generics in Kotlin with Pandas and Sloths!
+Generics in Kotlin with Week2HigherOrderFunctions.Pandas and Week2HigherOrderFunctions.Sloths!
 
 Hi folks! Welcome to Kotlin Thursdays. I’m really excited to kick off the first one of the year, and what better way to do it than tackling Generics in Kotlin? Generics in code can actually create stronger type-checking systems in your code, as this gives programmers the ability to fix issues at compile time rather than runtime.
 ![alt text](https://cdn-images-1.medium.com/max/1200/0*q0mKJVzOUd1Qo8nO.png)
