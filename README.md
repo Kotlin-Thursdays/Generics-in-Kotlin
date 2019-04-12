@@ -11,6 +11,6 @@ Hi folks! Welcome to Kotlin Thursdays. I’m really excited to kick off the firs
 - **Kotlin Generics:** https://kotlinlang.org/docs/reference/generics.html
 
 ## Medium Blog
- - **Part 1:**: https://medium.com/kotlin-thursdays/introduction-to-kotlin-generics-9d18d3719e1d
- - **Part 2:**: https://medium.com/kotlin-thursdays/introduction-to-kotlin-generics-part-2-9428963bb96b
+ - **Part 1:** https://medium.com/kotlin-thursdays/introduction-to-kotlin-generics-9d18d3719e1d
+ - **Part 2:** https://medium.com/kotlin-thursdays/introduction-to-kotlin-generics-part-2-9428963bb96b
 
